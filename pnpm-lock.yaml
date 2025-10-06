@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@types/react':
-        specifier: ^19.2.0
-        version: 19.2.0
       storybook:
         specifier: ^9.0.0 || ^10.0.0 || ^10.0.0-0
         version: 9.1.10(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@5.4.20(@types/node@24.7.0))
@@ -24,6 +21,9 @@ importers:
       '@storybook/icons':
         specifier: ^1.6.0
         version: 1.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/react':
+        specifier: ^19.2.0
+        version: 19.2.0
       '@vitest/coverage-v8':
         specifier: 2.1.9
         version: 2.1.9(vitest@2.1.9(@types/node@24.7.0)(jsdom@25.0.1))
