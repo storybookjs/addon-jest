@@ -20,7 +20,7 @@ Or if you're using yarn as a package manager:
 
 ## Configuration
 
-Register the addon in your [`.storybook/main.js`](https://storybook.js.org/docs/configure#configure-your-storybook-project?ref=readme):
+Register the addon in your [`.storybook/main.ts`](https://storybook.js.org/docs/configure#configure-your-storybook-project?ref=readme):
 
 ```js
 export default {
