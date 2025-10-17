@@ -44,8 +44,5 @@ jobs:
       - name: Format check
         run: pnpm format:check
 
-      - name: Build Storybook
-        run: pnpm build-storybook
-
       - name: Publish preview release
         run: pnpm pkg-pr-new publish --no-template
