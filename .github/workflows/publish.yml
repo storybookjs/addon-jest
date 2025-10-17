@@ -87,5 +87,7 @@ jobs:
         run: pnpm prep
 
       - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           pnpm run release
