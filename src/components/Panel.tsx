@@ -70,14 +70,12 @@ const SuiteTotals = styled(UnstyledSuiteTotals)(({ theme }) => ({
   flexShrink: 0,
 }));
 
-const SuiteProgressPortion = styled.div<{ color?: string; progressPercent: number }>(
-  ({ color, progressPercent }) => ({
-    height: 6,
-    top: 3,
-    width: `${progressPercent}%`,
-    backgroundColor: color,
-  })
-);
+const SuiteProgressPortion = styled.div<{ color?: string; progressPercent: number }>(({ color, progressPercent }) => ({
+  height: 6,
+  top: 3,
+  width: `${progressPercent}%`,
+  backgroundColor: color,
+}));
 
 interface ContentProps {
   tests: Test[];
@@ -89,10 +87,7 @@ const getTestsByTypeMap = (result: Test['result']) => {
   result.assertionResults.forEach((assertion) => {
     const existingTestsForType = testsByType.get(assertion.status);
 
-    testsByType.set(
-      assertion.status,
-      existingTestsForType ? existingTestsForType.concat(assertion) : [assertion]
-    );
+    testsByType.set(assertion.status, existingTestsForType ? existingTestsForType.concat(assertion) : [assertion]);
   });
   return testsByType;
 };
@@ -152,17 +147,12 @@ const TestPanel: FC<{ test: Test }> = ({ test }) => {
     return <Placeholder>This story has tests configured, but no file was found</Placeholder>;
   }
 
-  const testsByType: Map<string, AssertionResult[]> = useMemo(
-    () => getTestsByTypeMap(result),
-    [result]
-  );
+  const testsByType: Map<string, AssertionResult[]> = useMemo(() => getTestsByTypeMap(result), [result]);
   const tabs = useMemo(
     () => [
       {
         id: 'failing-tests',
-        title: (
-          <TabItem count={testsByType.get(StatusTypes.FAILED_TYPE)?.length ?? 0} title="Failing" />
-        ),
+        title: <TabItem count={testsByType.get(StatusTypes.FAILED_TYPE)?.length ?? 0} title="Failing" />,
         children: () => (
           <TabPanel
             emptyMessage="This story has no failing tests."
@@ -172,9 +162,7 @@ const TestPanel: FC<{ test: Test }> = ({ test }) => {
       },
       {
         id: 'passing-tests',
-        title: (
-          <TabItem count={testsByType.get(StatusTypes.PASSED_TYPE)?.length ?? 0} title="Passing" />
-        ),
+        title: <TabItem count={testsByType.get(StatusTypes.PASSED_TYPE)?.length ?? 0} title="Passing" />,
         children: () => (
           <TabPanel
             emptyMessage="This story has no passing tests."
@@ -184,9 +172,7 @@ const TestPanel: FC<{ test: Test }> = ({ test }) => {
       },
       {
         id: 'pending-tests',
-        title: (
-          <TabItem count={testsByType.get(StatusTypes.PENDING_TYPE)?.length ?? 0} title="Pending" />
-        ),
+        title: <TabItem count={testsByType.get(StatusTypes.PENDING_TYPE)?.length ?? 0} title="Pending" />,
         children: () => (
           <TabPanel
             emptyMessage="This story has no pending tests."
@@ -196,9 +182,7 @@ const TestPanel: FC<{ test: Test }> = ({ test }) => {
       },
       {
         id: 'todo-tests',
-        title: (
-          <TabItem count={testsByType.get(StatusTypes.TODO_TYPE)?.length ?? 0} title="To Do" />
-        ),
+        title: <TabItem count={testsByType.get(StatusTypes.TODO_TYPE)?.length ?? 0} title="To Do" />,
         children: () => (
           <TabPanel
             emptyMessage="This story has no tests to do."
@@ -229,9 +213,7 @@ const TestPanel: FC<{ test: Test }> = ({ test }) => {
                     <SuiteProgressPortion
                       key={`progress-portion-${entry[0]}`}
                       color={getColorByType(entry[0])}
-                      progressPercent={
-                        entry[1] ? (entry[1].length / result.assertionResults.length) * 100 : 0
-                      }
+                      progressPercent={entry[1] ? (entry[1].length / result.assertionResults.length) * 100 : 0}
                     />
                   );
                 })}
@@ -275,11 +257,7 @@ const Panel = ({ tests }: PanelProps) => (
         <Fragment>No tests found</Fragment>
         <Fragment>
           Learn how to&nbsp;
-          <Link
-            href="https://github.com/storybookjs/storybook/tree/master/addons/jest"
-            target="_blank"
-            withArrow
-          >
+          <Link href="https://github.com/storybookjs/storybook/tree/master/addons/jest" target="_blank" withArrow>
             add Jest test results to your story
           </Link>
         </Fragment>
